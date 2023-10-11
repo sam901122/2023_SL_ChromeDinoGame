@@ -195,16 +195,14 @@ class ListCatusAndBirds:
                 if rand == 5:
                     self.list.append(
                         Bird(
-                            self.list[1].x
-                            + random.randint(DISTANCE_MIN + 200, DISTANCE_MAX + 100),
+                            self.list[1].x + random.randint(DISTANCE_MIN + 200, DISTANCE_MAX + 100),
                             random.choice((Y_BIRD_1, Y_BIRD_2, Y_BIRD_3)),
                         )
                     )
                 else:
                     self.list.append(
                         Catus(
-                            self.list[1].x
-                            + random.randint(DISTANCE_MIN + 100, DISTANCE_MAX + 100),
+                            self.list[1].x + random.randint(DISTANCE_MIN + 100, DISTANCE_MAX + 100),
                             Y_CATUS,
                             random.randint(0, 4),
                         )
@@ -314,18 +312,14 @@ class BlinkText:
 
     def draw(self):
         self.surface.set_alpha(self.alpha)
-        DISPLAYSURF.blit(
-            self.surface, (int(WINDOWWIDTH / 2 - self.surface.get_width() / 2), 100)
-        )
+        DISPLAYSURF.blit(self.surface, (int(WINDOWWIDTH / 2 - self.surface.get_width() / 2), 100))
 
 
 def isCollision(tRex, ls):
     tRexMask = pygame.mask.from_surface(tRex.surface)
     for catusOrBird in ls.list:
         catusOrBird_mask = pygame.mask.from_surface(catusOrBird.surface)
-        result = tRexMask.overlap(
-            catusOrBird_mask, (catusOrBird.x - tRex.x, catusOrBird.y - tRex.y)
-        )
+        result = tRexMask.overlap(catusOrBird_mask, (catusOrBird.x - tRex.x, catusOrBird.y - tRex.y))
         if result:
             return True
     return False
@@ -403,9 +397,7 @@ def main():
             while True:
                 isStart = False
                 for event in pygame.event.get():
-                    if event.type == QUIT or (
-                        event.type == KEYUP and event.key == K_ESCAPE
-                    ):
+                    if event.type == QUIT or (event.type == KEYUP and event.key == K_ESCAPE):
                         pygame.quit()
                         sys.exit()
                     if event.type == KEYDOWN and event.key == K_SPACE:
